@@ -1,0 +1,7 @@
+<h1>User Login</h1>
+
+<%= form_for(:user, url: users_login_path )do |f| %>
+  <%= f.text_field :username, placeholder: "username" %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%= submit_tag("Login") %>
+<% end %>
