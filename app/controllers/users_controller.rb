@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   end
 
   def create # POST
-    @user = User.build(user_params)
+      @user = User.new(user_params)
     if @user.save
-      redirect_to profile(@user)
+      redirect_to user_url(@user)
     else
       flash[:error] = @user.errors.full_messages
+      redirect_to new_user_path
     end
   end
 
@@ -20,14 +21,23 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
     if @user
       session[:user_id] = @user.id
-      redirect_to profile(@user)
+      redirect_to user_url(@user)
     else
       flash[:error] = @user.errors.full_messages
+      redirect_to users_login_path
     end
   end
 
   def show # profile
+    @user = User.find_by(id: session[:user_id]) #check a better way to do this
   end
+
+  # def logout
+  #   @user = User.find_by(id: session[:user_id])
+  #   if @user
+  #     session.clear
+  #   end
+  # end
 
   private
 
