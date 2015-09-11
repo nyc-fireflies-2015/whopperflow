@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'answer/index'
+
+  get 'answer/new'
+
+  get 'answer/edit'
+
+  get 'answer/show'
+
+  get 'answer/update'
+
+  get 'answer/destroy'
+
    get '/login' => 'users#login'
    get '/register' => 'users#register'
    get '/profile' => 'users#show'
