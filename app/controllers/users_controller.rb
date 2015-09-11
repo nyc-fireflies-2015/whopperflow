@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def login # POST
-    @user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
+    @user = User.find_by(username: params[:user][:username]).try(:authenticate, params[:user][:password])
     if @user
       session[:user_id] = @user.id
       redirect_to user_url(@user)
