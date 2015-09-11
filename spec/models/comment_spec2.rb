@@ -8,5 +8,4 @@ describe Comment do
     it 'should belong to an author (class name User)' do
       should belong_to(:author).class_name('User')
     end
-  end
 end
