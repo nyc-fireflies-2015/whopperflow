@@ -19,12 +19,13 @@ class UsersController < ApplicationController
 
   def login # POST
     @user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
+    p @user
     if @user
       session[:user_id] = @user.id
       redirect_to user_url(@user)
     else
-      flash[:error] = @user.errors.full_messages
-      redirect_to users_login_path
+      flash[:error] = 'incorrect username or password'
+      redirect_to users_path
     end
   end
 
