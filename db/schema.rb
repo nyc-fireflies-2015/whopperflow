@@ -11,24 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< 2fd36a3767f00bf81bb2603411812cf9dcc2e3d0
-ActiveRecord::Schema.define(version: 0) do
-=======
+
 ActiveRecord::Schema.define(version: 20150911185514) do
->>>>>>> Create models and migrations
-=======
-ActiveRecord::Schema.define(version: 20150911185514) do
->>>>>>> 8f15084c69f9573d83898d647d97f57258b46a61
+  Create models and migrations
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-<<<<<<< 2fd36a3767f00bf81bb2603411812cf9dcc2e3d0
-=======
-=======
->>>>>>> 8f15084c69f9573d83898d647d97f57258b46a61
   create_table "answers", force: :cascade do |t|
     t.string   "content"
     t.integer  "author_id"
@@ -73,9 +62,4 @@ ActiveRecord::Schema.define(version: 20150911185514) do
   end
 
   add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
-
-<<<<<<< HEAD
->>>>>>> Create models and migrations
-=======
->>>>>>> 8f15084c69f9573d83898d647d97f57258b46a61
 end
