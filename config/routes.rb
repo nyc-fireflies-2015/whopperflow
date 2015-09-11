@@ -3,6 +3,7 @@ Rails.application.routes.draw do
    # get '/users/new' => 'users#new'
    # get '/users/profile' => 'users#show'
    post '/users/login' => 'users#login'
+   delete '/users/logout' => 'users#logout'
    # post '/users/register' => 'users#register'
 
    resources :users
