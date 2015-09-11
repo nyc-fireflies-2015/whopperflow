@@ -2,12 +2,10 @@ require 'rails_helper'
 
 describe UsersController do
   describe 'POST #create' do
-    context 'valid answer' do
-      let!(:question) { FactoryGirl.create(:question) }
+    context 'registers valid user' do
       it "creates a new answer in the database" do
         expect{
-          post :create, id: question.id,
-          answer: FactoryGirl.attributes_for(:answer)
+          post :create, 
         }.to change(question.answers.count).by 1
       end
       it "redirects to Question#show" do
