@@ -1,7 +1,7 @@
-# FactoryGirl.define do
-#   factory :question do
-
-#   end
-
-# end
+FactoryGirl.define do
+  factory :question do
+    title { Faker::Lorem.word }
+    content { Faker::Lorem.paragraph }
+  end
+end
 
