@@ -11,9 +11,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 2fd36a3767f00bf81bb2603411812cf9dcc2e3d0
 ActiveRecord::Schema.define(version: 0) do
+=======
+ActiveRecord::Schema.define(version: 20150911185514) do
+>>>>>>> Create models and migrations
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< 2fd36a3767f00bf81bb2603411812cf9dcc2e3d0
+=======
+  create_table "answers", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "author_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "author_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",       null: false
+    t.string   "content",     null: false
+    t.integer  "author_id"
+    t.integer  "best_answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean  "up_or_down"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
+
+>>>>>>> Create models and migrations
 end
