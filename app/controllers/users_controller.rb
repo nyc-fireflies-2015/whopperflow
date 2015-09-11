@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   def index # login page
     @user = User.new
   end
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
   def create # POST
       @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_url(@user)
     else
       flash[:error] = @user.errors.full_messages
@@ -19,7 +22,6 @@ class UsersController < ApplicationController
 
   def login # POST
     @user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
-    p @user
     if @user
       session[:user_id] = @user.id
       redirect_to user_url(@user)
@@ -30,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def show # profile
+    redirect_to_login_unless_logged_in
     @user = User.find_by(id: session[:user_id]) #check a better way to do this
   end
 
