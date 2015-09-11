@@ -1,0 +1,7 @@
+<h1>New User Registration</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :username, placeholder: "username" %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%= submit_tag("Register") %>
+<% end %>

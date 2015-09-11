@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-   get '/login' => 'users#login'
-   get '/register' => 'users#register'
-   get '/profile' => 'users#show'
+   # get '/users/index' => 'users#index'
+   # get '/users/new' => 'users#new'
+   # get '/users/profile' => 'users#show'
+   post '/users/login' => 'users#login'
+   # post '/users/register' => 'users#register'
+
+   resources :users
 
    resources :questions
    resources :comments
