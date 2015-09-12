@@ -41,33 +41,41 @@ describe AnswersController do
     end
   end
   describe 'GET #edit' do
+    let!(:answer) { question.answers.create(FactoryGirl.attributes_for(:answer)) }
     it "assigns requested answer to @answer" do
-      answer = question.answers.create(FactoryGirl.attributes_for(:answer))
       get :edit, id: answer.id
       expect(assigns(:answer)).to eq answer
     end
     it "renders edit template" do
-      answer = question.answers.create(FactoryGirl.attributes_for(:answer))
       get :edit, id: answer.id
       expect(assigns(response)).to render_template :edit
     end
   end
   describe 'PATCH #update' do
+    let!(:answer) { question.answers.create(FactoryGirl.attributes_for(:answer)) }
     context 'valid answer' do
-
+      it "updates requested answer" do
+        old_content = answer.content
+        new_content = "new-content"
+        patch :update, id: answer.id, answer: { content: new_content }
+        answer.reload
+        expect(answer.content).to eq new_content
+      end
     end
     context 'invalid answer' do
-
+      it "does not update" do
+        old_content = answer.content
+        patch :update, id: answer.id, answer: { content: nil }
+        answer.reload
+        expect(answer.content).to eq old_content
+      end
     end
   end
   describe 'DELETE #destroy' do
-    context 'is author' do
-
-
+    it "destroys selected content" do
+      expect {
+        delete :destroy, id: answer.id
+      }.to change(question.answers.count).by -1
+      end
     end
-    context 'not author' do
-
-
-    end
-  end
 end
