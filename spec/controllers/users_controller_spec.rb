@@ -2,68 +2,25 @@ require 'rails_helper'
 
 describe UsersController do
   describe 'POST #create' do
-    context 'registers valid user' do
-      it "creates a new answer in the database" do
-        expect{
-          post :create, 
-        }.to change(question.answers.count).by 1
-      end
-      it "redirects to Question#show" do
-        post :create, id: question.id,
-        answer: FactoryGirl.attributes_for(:answer)
-        expect(response).to redirect_to question_path(question)
-      end
+    it "creates a new answer in the database" do
+      expect{
+        post :create, user: FactoryGirl.attributes_for(:user)
+      }.to change(User, :count).by 1
     end
-    context 'invalid answer' do
-      it "creates a new answer in the database" do
-        expect{
-          post :create, id: question.id,
-            answer: {content: nil}
-        }.to change(questions.answers.count).by 0
-      end
-      it "redirects to answers#new" do
-        post :create, id: question.id,
-        answer: {content: nil}
-        expect(response).to redirect_to new_answer
-      end
+    it "redirects invalid user to new user path" do
+      post :create, user: {username: nil, password: nil}
+      expect(response).to redirect_to new_user_path
     end
   end
-  describe 'GET #edit' do
-    let!(:answer) { question.answers.create(FactoryGirl.attributes_for(:answer)) }
-    it "assigns requested answer to @answer" do
-      get :edit, id: answer.id
-      expect(assigns(:answer)).to eq answer
+  describe 'POST #login' do
+    user = FactoryGirl.create(:user)
+    it "Logins in valid user" do
+      post :login, user: { username: user.username, password: user.password }
+      expect(response).to redirect_to user_url(user)
     end
-    it "renders edit template" do
-      get :edit, id: answer.id
-      expect(assigns(response)).to render_template :edit
-    end
-  end
-  describe 'PATCH #update' do
-    let!(:answer) { question.answers.create(FactoryGirl.attributes_for(:answer)) }
-    context 'valid answer' do
-      it "updates requested answer" do
-        old_content = answer.content
-        new_content = "new-content"
-        patch :update, id: answer.id, { content: new_content }
-        answer.reload
-        expect(answer.content).to eq new_content
-      end
-    end
-    context 'invalid answer' do
-      it "does not update" do
-        old_content = answer.content
-        patch :update, id: answer.id, { content: nil }
-        answer.reload
-        expect(answer.content).to eq old_content
-      end
-    end
-  end
-  describe 'DELETE #destroy' do
-    it "destroys selected content" do
-      expect {
-        delete :destroy, id: answer.id
-      }.to change(question.answers.count).by -1
+    it "redirects invalid user to users path" do
+      post :login, user: { username: nil, password: nil }
+      expect(response).to redirect_to users_path
     end
   end
 end

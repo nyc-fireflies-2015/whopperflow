@@ -57,7 +57,7 @@ describe AnswersController do
       it "updates requested answer" do
         old_content = answer.content
         new_content = "new-content"
-        patch :update, id: answer.id, { content: new_content }
+        patch :update, id: answer.id, answer: { content: new_content }
         answer.reload
         expect(answer.content).to eq new_content
       end
@@ -65,7 +65,7 @@ describe AnswersController do
     context 'invalid answer' do
       it "does not update" do
         old_content = answer.content
-        patch :update, id: answer.id, { content: nil }
+        patch :update, id: answer.id, answer: { content: nil }
         answer.reload
         expect(answer.content).to eq old_content
       end
@@ -76,6 +76,6 @@ describe AnswersController do
       expect {
         delete :destroy, id: answer.id
       }.to change(question.answers.count).by -1
+      end
     end
-  end
 end
