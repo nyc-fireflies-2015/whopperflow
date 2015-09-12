@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def new
-    Comment.new
+    @comment = Comment.new
   end
 
   def create
@@ -20,9 +20,9 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find_by(id: params[:id])
-    @question = comment.associated_question
+    @question = @comment.associated_question
 
-    if @comment.author_id != current_user.id
+    if @comment.author_id != session[:user_id]
       flash[:error] = "you are not the author of this comment"
       redirect_to @question
     end
@@ -49,10 +49,8 @@ class CommentsController < ApplicationController
 
   private
 
-
-
   def comment_params
-    params.require(:comments).permit(:content, :author_id)
+    params.require(:comment).permit(:content, :author_id)
   end
 
 end
