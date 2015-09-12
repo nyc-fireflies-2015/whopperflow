@@ -1,6 +1,9 @@
 <p><%= @question.title %></p>
 <p><%= @question.content %></p>
-<p><%= link_to 'Edit', edit_question_path(@question) %></p>
+
+<% if @question.author_id == session[:user_id] %>
+	<p><%= link_to 'Edit', edit_question_path(@question) %></p>
+<% end %>
 
 
 <%= render partial: "answers/new", locals: {answer: @answer} %>
