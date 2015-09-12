@@ -19,6 +19,7 @@
             <li class="active"><a href="/questions">All Questions</a></li>
             <% if logged_in? %>
              <li><%= link_to 'Your Profile', user_path(current_user) %></li>
+             <li><%= render partial: "/logout" %></li>
             <%else%>
             <li><%= link_to 'Login', users_path %></li>
             <li><%= link_to 'Register', new_user_path %></li>

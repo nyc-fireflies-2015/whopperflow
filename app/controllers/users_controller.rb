@@ -36,12 +36,12 @@ class UsersController < ApplicationController
     @user = User.find_by(id: session[:user_id]) #check a better way to do this
   end
 
-  # def logout
-  #   @user = User.find_by(id: session[:user_id])
-  #   if @user
-  #     session.clear
-  #   end
-  # end
+  def destroy # logout
+    if current_user
+      session.clear
+    end
+    redirect_to '/'
+  end
 
   private
 
