@@ -25,9 +25,11 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find_by(id: params[:id])
-    @answer.assign_attributes(answer_params)
+    @question = Question.find_by(id: @answer.question_id)
+    
+    @answer.update_attributes(answer_params)
     if @answer.save
-      redirect_to question_url(@answer.question)
+      redirect_to @question
     else
       flash[:error] = "incorrect answer format"
       redirect_to edit_answer_url(@answer)
