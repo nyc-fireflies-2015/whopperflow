@@ -2,6 +2,11 @@ class AnswersController < ApplicationController
   include ApplicationHelper
 
   def create
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @question = Question.find_by(id: params[:id])
     @answer = @question.answers.build(answer_params)
     @answer.author_id = current_user.id
@@ -15,6 +20,11 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @answer = Answer.find_by(id: params[:id])
     @question = Question.find_by(id: @answer.question_id)
     if @answer.author_id != current_user.id
@@ -42,10 +52,10 @@ class AnswersController < ApplicationController
     redirect_to question_url(@answer.question)
   end
 
-private
+  private
 
-def answer_params
- params.require(:answer).permit(:content)
-end
+  def answer_params
+   params.require(:answer).permit(:content)
+  end
 
 end
