@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find_by(id: params[:id])
-    @question = Question.find_by(id: @answer.question_id)
+    @question = @answer.question
     if @answer.author_id != current_user.id
       flash[:error] = "you are not the author of this answer"
       redirect_to @question
@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find_by(id: params[:id])
-    @question = Question.find_by(id: @answer.question_id)
+    @question = @answer.question
 
     @answer.update_attributes(answer_params)
     if @answer.save
