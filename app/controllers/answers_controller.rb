@@ -16,9 +16,8 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find_by(id: params[:id])
-    if @answer.author == current_user
-      render edit_answer_path
-    else
+    @question = Question.find_by(id: @answer.question_id)
+    if @answer.author != current_user
       flash[:error] = "you are not the author of this answer"
       redirect_to @question
     end
