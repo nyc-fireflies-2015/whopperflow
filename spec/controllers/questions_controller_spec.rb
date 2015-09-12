@@ -16,15 +16,17 @@ describe QuestionsController, type: :controller do
 
 	describe 'POST #create' do
     context 'valid answer' do
+      before :each do
+        login(user)
+        post :create, question: FactoryGirl.attributes_for(:question)
+      end
       it "creates a new question in the database" do
-      	login(user)
-      	post :create, question: FactoryGirl.attributes_for(:question)
       	expect(Question.count).to eq 1
       end
-      # it "redirects to Question#show" do
-      #   post :create, question: FactoryGirl.attributes_for(:question)
-      #   expect(response).to redirect_to question_path(question)
-      # end
+      it "redirects to Question#show" do
+        # binding.pry
+        expect(response).to redirect_to Question.last
+      end
     end
     # context 'invalid answer' do
     #   it "creates a new answer in the database" do
