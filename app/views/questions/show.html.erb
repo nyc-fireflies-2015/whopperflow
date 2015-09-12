@@ -7,5 +7,6 @@
 
 
 <% @question.answers.each do |answer| %>
-  <%= answer.content %>
+  <div><%= answer.content %></div>
 <% end %>
+<%= link_to 'Back', questions_path %>
