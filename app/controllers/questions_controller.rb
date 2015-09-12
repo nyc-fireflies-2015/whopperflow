@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  include ApplicationHelper
+
   def index
     @questions = Question.all
   end
@@ -13,7 +15,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    user = current_user
+    @question = user.questions.new(question_params)
 
     if @question.save
       redirect_to @question
@@ -44,6 +47,7 @@ class QuestionsController < ApplicationController
   end
 
   private
+  
   def question_params
     params.require(:question).permit(:title, :content)
   end

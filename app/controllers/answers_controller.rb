@@ -1,9 +1,10 @@
-class AnswerController < ApplicationController
+class AnswersController < ApplicationController
+  include ApplicationHelper
 
   def create
     @question = Question.find_by(id: params[:id])
     @answer = @question.answers.build(answer_params)
-    @answer.author = current_user
+    @answer.author_id = current_user.id
 
     if @answer.save
       redirect_to @question
