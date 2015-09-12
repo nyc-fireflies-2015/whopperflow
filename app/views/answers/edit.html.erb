@@ -1,6 +1,6 @@
 <h1>Editing answer</h1>
 
-<%= form_for @answer, url: answer_path(@answer), method: :patch do |f| %>
+<%= form_for @answer, url: answer_path(@answer), method: :patch, :html => {:class =>"dark-matter"} do |f| %>
 
   <p>
     <%= f.label :content %><br>
