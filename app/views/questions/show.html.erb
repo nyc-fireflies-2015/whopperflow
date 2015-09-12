@@ -7,7 +7,6 @@
 
 <h2>Answers</h2>
 <% @question.answers.each do |answer| %>
-
   <%= answer.content %>
 <% end %>
 
@@ -19,4 +18,3 @@
 
 
 <%= render partial: "answers/new", locals: {answer: @answer} %>
-
