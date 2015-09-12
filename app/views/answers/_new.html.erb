@@ -1,13 +1,13 @@
-<h3>Answer the Question</h3>
+<h3>Your Answer</h3>
 <%= form_for @answer do |f| %>
 
   <p>
     <%= f.label :content %><br>
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
     <input type="hidden" name="id" value="<%= @question.id %>"/>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit "Post Your Answer" %>
   </p>
 <% end %>
