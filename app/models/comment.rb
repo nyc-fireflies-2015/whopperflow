@@ -4,9 +4,9 @@ class Comment < ActiveRecord::Base
   def associated_question
     case self.commentable_type
     when "Answer"
-      self.answer.question
+      self.commentable.question
     when "Question"
-      self.question
+      self.commentable
     end
   end
 end
