@@ -7,6 +7,9 @@
 
 <h2>Answers</h2>
 <% @question.answers.each do |answer| %>
+  <%= answer.content %>
+<% end %>
+
   <div><%= answer.content %></div>
   <div><%= link_to 'Edit', edit_answer_path(answer) %></div>
 
