@@ -16,9 +16,8 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find_by(id: params[:id])
-    if @answer.author == current_user
-      render edit_answer_path
-    else
+    @question = Question.find_by(id: @answer.question_id)
+    if @answer.author_id != current_user.id
       flash[:error] = "you are not the author of this answer"
       redirect_to @question
     end
@@ -26,9 +25,11 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find_by(id: params[:id])
-    @answer.assign_attributes(answer_params)
+    @question = Question.find_by(id: @answer.question_id)
+
+    @answer.update_attributes(answer_params)
     if @answer.save
-      redirect_to question_url(@answer.question)
+      redirect_to @question
     else
       flash[:error] = "incorrect answer format"
       redirect_to edit_answer_url(@answer)
