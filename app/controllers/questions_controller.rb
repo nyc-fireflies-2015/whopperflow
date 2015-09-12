@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find_by(id: params[:id])
 
-    if @question.update(question_params)
+    if @question.update_attributes(question_params)
       redirect_to @question
     else
       render :edit
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
   end
 
   private
-  
+
   def question_params
     params.require(:question).permit(:title, :content)
   end
