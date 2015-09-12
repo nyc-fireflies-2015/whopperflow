@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   include ApplicationHelper
 
-
   def index
     @questions = Question.all
   end
@@ -17,7 +16,6 @@ class QuestionsController < ApplicationController
 
   def create
     user = current_user
-    # @question = Question.new(question_params)
     @question = user.questions.new(question_params)
 
     if @question.save
@@ -49,6 +47,7 @@ class QuestionsController < ApplicationController
   end
 
   private
+  
   def question_params
     params.require(:question).permit(:title, :content)
   end
