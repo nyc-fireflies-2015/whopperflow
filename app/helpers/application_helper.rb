@@ -10,6 +10,7 @@ module ApplicationHelper
   end
 
   def redirect_to_login_unless_logged_in
+    require 'pry'; binding.pry
     flash[:error] = "You must be logged in to do that!" unless logged_in?
     redirect_to users_path unless logged_in?
   end
