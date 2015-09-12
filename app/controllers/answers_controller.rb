@@ -6,12 +6,8 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
     @answer.author_id = current_user.id
 
-    if @answer.save
-      redirect_to @question
-    else
-      flash[:error] = "incorrect answer format"
-      redirect_to @question
-    end
+    flash[:error] = "incorrect answer format" unless @answer.save
+    redirect_to @question
   end
 
   def edit
