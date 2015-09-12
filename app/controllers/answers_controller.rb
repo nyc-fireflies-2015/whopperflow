@@ -1,8 +1,10 @@
-class AnswerController < ApplicationController
+class AnswersController < ApplicationController
 
   def create
     @question = Question.find_by(id: params[:id])
     @answer = @question.answers.build(answer_params)
+    binding.pry
+    # need to include the helper application
     @answer.author = current_user
 
     if @answer.save
