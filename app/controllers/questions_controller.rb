@@ -62,20 +62,19 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    puts "id: #{params[:id]}"
     @question = Question.find_by(id: params[:id])
-    unless voted_by_current_user?(@question)
+    unless @question.voted_by_current_user?(voter: current_user, up: true)
       @question.upvote(session[:user_id])
     end
-    redirect_to @question
+    redirect_to :back
   end
 
   def downvote
     @question = Question.find_by(id: params[:id])
-    unless voted_by_current_user?(@question)
+    unless @question.voted_by_current_user?(voter: current_user, up: false)
       @question.downvote(session[:user_id])
     end
-    redirect_to @question
+    redirect_to :back
   end
 
 

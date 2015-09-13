@@ -7,10 +7,10 @@
       <hr>
       <p><%= answer.content %></p>
   <p>
+    <div class="edit">
   <% if answer.author_id == session[:user_id] %>
-    <br>
     <div><%= link_to 'Edit', edit_answer_path(answer) %></div>
-    <br>
   <% end %>
   <p>
+  </div>
   </li>

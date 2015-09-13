@@ -6,8 +6,9 @@
       </p>
       <hr>
         <p><%= link_to question.title, question_path(question) %><p>
+  <div class="edit">
   <% if question.author_id == session[:user_id] %>
-  <br>
   <p><%= link_to 'Edit', edit_question_path(question) %></p>
 <% end %>
+</div>
   </li>
