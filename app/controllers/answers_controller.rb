@@ -48,25 +48,22 @@ class AnswersController < ApplicationController
     redirect_to question_url(@answer.question)
   end
 
-  def up_vote
+  def upvote
     @answer = Answer.find_by(id: params[:id])
-    if !answer_voted_by_current_user?(@answer)
-      @vote = @answer.votable.build(vote_params)
-      @vote.up_or_down = true
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless voted_by_current_user?(@answer)
+      @answer.upvote(session[:user_id])
     end
+    redirect_to @answer.question
   end
 
-  def down_vote
+  def downvote
     @answer = Answer.find_by(id: params[:id])
-    if !answer_voted_by_current_user?(@answer)
-      @vote = @answer.votable.build(vote_params)
-      @vote.up_or_down = false
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless voted_by_current_user?(@answer)
+      @answer.downvote(session[:user_id])
     end
+    redirect_to @answer.question
   end
+
 
   private
 

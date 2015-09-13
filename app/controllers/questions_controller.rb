@@ -61,24 +61,21 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
-  def up_vote
+  def upvote
+    puts "id: #{params[:id]}"
     @question = Question.find_by(id: params[:id])
-    unless question_voted_by_current_user?(@question)
-      @vote = @question.votable.build(vote_params)
-      @vote.up_or_down = true
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless voted_by_current_user?(@question)
+      @question.upvote(session[:user_id])
     end
+    redirect_to @question
   end
 
-  def down_vote
+  def downvote
     @question = Question.find_by(id: params[:id])
-    unless question_voted_by_current_user?(@question)
-      @vote = @question.votable.build(vote_params)
-      @vote.up_or_down = false
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless voted_by_current_user?(@question)
+      @question.downvote(session[:user_id])
     end
+    redirect_to @question
   end
 
 
