@@ -48,7 +48,7 @@ describe QuestionsController, type: :controller do
 	end
 
 	describe 'POST #create' do
-    context 'valid question params' do
+    context 'with valid attributes' do
       before :each do
         login(user)
       end
@@ -97,6 +97,13 @@ describe QuestionsController, type: :controller do
     end
   end
 
-  describe 'PATCH #update'
+  describe 'PATCH #update' do
+    context 'with valid attributes' do
+      it 'locates the requested @question' do
+        patch :update, id: question.id, question: FactoryGirl.attributes_for(:question)
+        expect(assigns(:question)).to eq question
+      end
+    end
+  end
 
 end
