@@ -681,3 +681,23 @@ li {
   background-color: #DEDDD6;
 }
 
+
+/*Votes*/
+
+.vote{
+  position: relative;
+  top: -20px;
+  float:right;
+  text-align: center;
+  width: 80px;
+}
+.votes_count{
+  position: relative;
+  float: right;
+  top: -50px;
+}
+.upvote, .downvote{
+  clear: right;
+}
+
+

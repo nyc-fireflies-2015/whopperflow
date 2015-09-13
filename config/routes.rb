@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
+  post '/questions/upvote' => 'questions#upvote'
+  post '/questions/downvote' => 'questions#downvote'
+
+  post '/answers/upvote' => 'answers#upvote'
+  post '/answers/downvote' => 'answers#downvote'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
