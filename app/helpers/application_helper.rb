@@ -14,18 +14,9 @@ module ApplicationHelper
     redirect_to users_path unless logged_in?
   end
 
-  def question_voted_by_current_user?(question)
-    voted = false
-    question.votes.each do |vote|
-      voted = true if vote.voter_id == current_user.id
-    end
-    return voted
-  end
-
-  def answer_voted_by_current_user?(answer)
-    answer.votes.any? do |vote|
+  def voted_by_current_user?(element)
+    element.votes.any? do |vote|
       vote.voter_id == current_user.id
     end
   end
-
 end
