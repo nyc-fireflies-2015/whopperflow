@@ -2,7 +2,7 @@
       <p>
         <span class="username"><%= answer.author.username %></span>
           <span class="timestamp"><%= answer.created_at %></span>
-          <span class="votes"># votes</span>
+          <span class="votes"><%= render partial: "answers/votes", locals: {votes_count: answer.votes_count} %></span>
       </p>
       <hr>
       <p><%= answer.content %></p>

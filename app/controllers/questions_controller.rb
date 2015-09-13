@@ -61,14 +61,14 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
-  def up_vote
+  def upvote
     @question = Question.find_by(id: params[:id])
     unless question_voted_by_current_user?(@question)
       @question.up_vote(session[:user_id])
     end
   end
 
-  def down_vote
+  def downvote
     @question = Question.find_by(id: params[:id])
     unless question_voted_by_current_user?(@question)
       @question.down_vote(session[:user_id])

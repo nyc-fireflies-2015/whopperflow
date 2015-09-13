@@ -23,11 +23,9 @@ module ApplicationHelper
   end
 
   def answer_voted_by_current_user?(answer)
-    voted = false
-    answer.votes.each do |vote|
-      voted = true if vote.voter_id == current_user.id
+    answer.votes.any? do |vote|
+      vote.voter_id == current_user.id
     end
-    return voted
   end
 
 end
