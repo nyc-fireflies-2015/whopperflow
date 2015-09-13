@@ -5,7 +5,7 @@
   <h1>Questions</h1>
 </div>
 <hr class="bottom">
-  <ul id="question-river">
+  <ul class="question-river">
 <% @questions.each do |question| %>
 <%= render partial: "questions/info", locals: {question: question} %>
 <% end %>

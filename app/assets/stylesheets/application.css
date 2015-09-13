@@ -633,6 +633,9 @@
 .question-header{
   font-size: 60px;
 }
+.answers-header{
+  font-size: 60px
+}
 .bottom{
   margin-bottom: 50px;
 }
