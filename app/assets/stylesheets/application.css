@@ -699,5 +699,7 @@ li {
 .upvote, .downvote{
   clear: right;
 }
-
+.edit{
+  float: right;
+}
 
