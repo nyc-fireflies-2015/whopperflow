@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
     @answer.author_id = current_user.id
 
-    flash[:error] = "incorrect answer format" unless @answer.save
+    flash[:error] = @answer.errors.full_messages unless @answer.save
     redirect_to @question
   end
 
@@ -37,7 +37,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @question
     else
-      flash[:error] = "incorrect answer format"
+      flash[:error] = @answer.errors.full_messages
       redirect_to edit_answer_url(@answer)
     end
   end
