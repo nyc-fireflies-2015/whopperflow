@@ -1,7 +1,21 @@
-<hr class="top">
-<h1>Questions</h1>
-<hr class="bottom">
 
+<div class="question-list">
+<hr class="top">
+<div class="question-header">
+  <h1>Questions</h1>
+</div>
+<hr class="bottom">
+  <ul id="question-river">
 <% @questions.each do |question| %>
-  <p><%= link_to question.title, question_path(question) %></p>
+  <li class="question-display">
+      <p>
+        <span class="username"><%= question.author.username %></span>
+          <span class="timestamp"><%= question.created_at %></span>
+          <span class="votes"># votes</span>
+      </p>
+        <p><%= link_to question.title, question_path(question) %><p>
+  </li>
+</ul>
 <% end %>
+</div>
+
