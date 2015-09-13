@@ -98,10 +98,11 @@ describe QuestionsController, type: :controller do
   end
 
   describe 'PATCH #update' do
+    before :each do
+      @question = FactoryGirl.create(:question, title: "What is html?", content: "Please tell me more")
+    end
+
     context 'with valid attributes' do
-      before :each do
-        @question = FactoryGirl.create(:question, title: "What is html?", content: "Please tell me more")
-      end
       it 'locates the requested @question' do
         patch :update, id: @question.id, question: FactoryGirl.attributes_for(:question)
         expect(assigns(:question)).to eq @question
@@ -112,6 +113,11 @@ describe QuestionsController, type: :controller do
         @question.reload
         expect(@question.title).to eq "What is AJAX?"
         expect(@question.content).to eq "Please tell me more"
+      end
+
+      it 'redirects to the updated question' do
+        patch :update, id: @question.id, question: FactoryGirl.attributes_for(:question)
+        expect(response).to redirect_to @question
       end
     end
   end
