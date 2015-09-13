@@ -14,9 +14,7 @@ module ApplicationHelper
     redirect_to users_path unless logged_in?
   end
 
-  def voted_by_current_user?(element)
-    element.votes.any? do |vote|
-      vote.voter_id == current_user.id
-    end
+  def voted_by_current_user?(element, up)
+    !Vote.where(votable: element).where(voter: current_user).where(up: up).empty?
   end
 end

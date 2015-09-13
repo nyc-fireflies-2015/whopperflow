@@ -50,7 +50,7 @@ class AnswersController < ApplicationController
 
   def upvote
     @answer = Answer.find_by(id: params[:id])
-    unless voted_by_current_user?(@answer)
+    unless @answer.voted_by_current_user?(current_user, true)
       @answer.upvote(session[:user_id])
     end
     redirect_to @answer.question
@@ -58,7 +58,7 @@ class AnswersController < ApplicationController
 
   def downvote
     @answer = Answer.find_by(id: params[:id])
-    unless voted_by_current_user?(@answer)
+    unless @answer.voted_by_current_user?(current_user, false)
       @answer.downvote(session[:user_id])
     end
     redirect_to @answer.question
