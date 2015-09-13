@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150911185514) do
     t.boolean  "up_or_down"
     t.integer  "votable_id"
     t.string   "votable_type"
+    t.integer  "voter_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
