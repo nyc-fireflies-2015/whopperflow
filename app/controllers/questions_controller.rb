@@ -11,16 +11,15 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
-      return
     end
     @question = Question.new()
   end
 
   def create
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
@@ -36,7 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
@@ -64,7 +63,7 @@ class QuestionsController < ApplicationController
 
   def up_vote
     @question = Question.find_by(id: params[:id])
-    if !question_voted_by_current_user?(@question)
+    unless question_voted_by_current_user?(@question)
       @vote = @question.votable.build(vote_params)
       @vote.up_or_down = true
       @vote.voter_id = current_user.id
@@ -74,7 +73,7 @@ class QuestionsController < ApplicationController
 
   def down_vote
     @question = Question.find_by(id: params[:id])
-    if !question_voted_by_current_user?(@question)
+    unless question_voted_by_current_user?(@question)
       @vote = @question.votable.build(vote_params)
       @vote.up_or_down = false
       @vote.voter_id = current_user.id
