@@ -2,7 +2,7 @@
       <p>
         <span class="username"><%= question.author.username %></span>
           <span class="timestamp"><%= question.created_at %></span>
-          <%= render partial: "questions/votes", locals: {votes_count: question.votes_count} %>
+          <%= render partial: "questions/votes", locals: {question: question} %>
       </p>
       <hr>
         <p><%= link_to question.title, question_path(question) %><p>

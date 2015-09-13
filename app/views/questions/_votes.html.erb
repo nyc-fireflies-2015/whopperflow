@@ -1,11 +1,13 @@
 <div class="vote">
-  <form class="upvote" action="<%= questions_upvote_path %>" method="post">
+  <%= form_for question, url: questions_upvote_path, method: :post do |f| %>
     <input type="image" src="<%= image_path("upArrow.png") %>" alt="submit"/>
-  </form> 
-  <form class="downvote" action="<%= questions_downvote_path %>" method="post">
+    <input type="hidden" name="id" value="<%= question.id %>"/>
+  <% end %>
+  <%= form_for question, url: questions_downvote_path, method: :post do |f| %>
     <input type="image" src="<%= image_path("downArrow.png") %>" alt="submit"/>
-  </form>
+    <input type="hidden" name="id" value="<%= question.id %>"/>
+  <% end %>
     <span class="votes_count">
-    <%= votes_count %>
+    <%= question.votes_count %>
   </span>
 </div>
