@@ -7,11 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 10.times do
- u = FactoryGirl.create(:user)
- 5.times do
-    q = u.questions.create(FactoryGirl.attributes_for(:question))
-    5.times do
-      q.answers.create(FactoryGirl.attributes_for(:answer))
-    end
-  end
+  FactoryGirl.create(:user)
 end
+
+10.times do
+  # require 'pry';binding.pry
+  q = Question.find_or_create_by(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, author: User.all.sample)
+end
+
+20.times do
+  # binding.pry
+  a = Question.all.sample.answers.find_or_create_by(content: Faker::Lorem.paragraph, author: User.all.sample)
+end
+
+

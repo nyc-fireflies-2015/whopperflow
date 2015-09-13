@@ -4,4 +4,5 @@ class Question < ActiveRecord::Base
   has_many :votes, as: :votable
   has_many :answers
   has_one :best_answer, class_name: "Answer"
+  validates_presence_of :title, :content
 end

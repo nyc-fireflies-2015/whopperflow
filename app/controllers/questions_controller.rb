@@ -27,10 +27,10 @@ class QuestionsController < ApplicationController
     end
     user = current_user
     @question = user.questions.new(question_params)
-
     if @question.save
       redirect_to @question
     else
+      flash[:error] = @question.errors.full_messages
       render :new
     end
   end
@@ -50,6 +50,7 @@ class QuestionsController < ApplicationController
     if @question.update_attributes(question_params)
       redirect_to @question
     else
+      flash[:error] = @question.errors.full_messages
       render :edit
     end
 

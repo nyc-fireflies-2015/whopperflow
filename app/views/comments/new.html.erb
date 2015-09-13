@@ -1,0 +1,12 @@
+<%= form_for @comment, :html => {:class =>"dark-matter"} do |f| %>
+  <%= render partial: "/errors" %>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+
+  <p>
+
+    <%= f.submit %>
+  </p>
+<% end %>
