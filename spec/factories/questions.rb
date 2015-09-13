@@ -4,10 +4,10 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraph }
 
 
-		# factory :invalid_question do
-    	# title nil
-    	# content { Faker::Lorem.paragraph }
-  	# end
+		factory :invalid_question do
+    	title nil
+    	content { Faker::Lorem.paragraph }
+  	end
   end
 end
 

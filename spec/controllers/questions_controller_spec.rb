@@ -54,7 +54,7 @@ describe QuestionsController, type: :controller do
       end
 
       it "creates a new question in the database" do
-        expect{post :create, question: FactoryGirl.attributes_for(:question)}.to change(Question, :count).by(1)
+        expect{post :create, question: FactoryGirl.attributes_for(:question)}.to change(Question, :count).by 1
       end
 
       it "redirects to Question#show" do
@@ -81,5 +81,22 @@ describe QuestionsController, type: :controller do
     #   end
     # end
   end
+
+  describe 'GET #edit' do
+    context 'edit existing question' do
+      before :each do
+        get :edit, id: question.id
+      end
+      it 'assigns the requested question to @question' do
+        expect(assigns(:question)).to eq question
+      end
+
+      it 'renders the edit template' do
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe 'PATCH #update'
 
 end
