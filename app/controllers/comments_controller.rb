@@ -2,9 +2,16 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @type = case params[:type]
+              when "Answer"
+                Answer.find_by(id: params[:id])
+              when "Question"
+                Question.find_by(id: params[:id])
+              end
   end
 
   def create
+    binding.pry
     commentable  = case params[:type]
                    when "Answer"
                     Answer.find_by(id: params[:id])
@@ -30,7 +37,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:id])
-    @question = comment.associated_question
+    @question = @comment.associated_question
     @comment.update_attributes(comment_params)
 
     if @comment.save

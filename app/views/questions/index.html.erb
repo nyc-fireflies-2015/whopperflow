@@ -1,14 +1,14 @@
 
 <div class="question-list">
-<hr class="top">
-<div class="question-header">
-  <h1>Questions</h1>
-</div>
-<hr class="bottom">
-  <ul class="question-river">
-<% @questions.each do |question| %>
-<%= render partial: "questions/info", locals: {question: question} %>
-<% end %>
-</ul>
+	<hr class="top">
+	<div class="question-header">
+		<h1>Questions</h1>
+	</div>
+	<hr class="bottom">
+	<ul class="question-river">
+		<% @questions.each do |question| %>
+		<%= render partial: "questions/info", locals: {question: question} %>
+		<% end %>
+	</ul>
 </div>
 
