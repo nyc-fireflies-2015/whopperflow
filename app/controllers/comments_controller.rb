@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = commentable.comments.build(attributes)
     @question = @comment.associated_question
     flash[:error] = "incorrect comment format" unless @comment.save
-    redirect_to @question
+    redirect_to questions_url
   end
 
   def edit

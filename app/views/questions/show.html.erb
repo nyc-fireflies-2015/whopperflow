@@ -14,7 +14,7 @@
 		<%= render partial: "answers/show", locals: {answer: answer} %>
 		<ul class="comments">
 			<% answer.comments.each do |comment| %>
-			<%= render partial: "comments/show", locals: {comment: comment} %>
+			<%= render partial: "comments/show", locals: {comment: comment, question: @question} %>
 			<% end %>
 			<li><%= link_to 'Add a comment', new_comment_path %></li>
 		</ul>
