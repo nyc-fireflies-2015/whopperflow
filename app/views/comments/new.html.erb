@@ -3,7 +3,8 @@
   <p>
     <%= f.label :content %><br>
     <%= f.text_area :content %>
-    <input name="type" type="hidden" value="<%= @type %>" />
+    <input name="type" type="hidden" value="<%= @type.class %>" />
+    <input name="id" type="hidden" value="<%= @type.id %>" />
   </p>
 
   <p>

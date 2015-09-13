@@ -3,17 +3,22 @@ class CommentsController < ApplicationController
   def new
     binding.pry
     @comment = Comment.new
-    @type = params[:type]
+    @type = case params[:type]
+              when "Answer"
+                Answer.find_by(id: params[:id])
+              when "Question"
+                Question.find_by(id: params[:id])
+              end
   end
 
   def create
-    binding.pry
     commentable  = case params[:type]
                    when "Answer"
                     Answer.find_by(id: params[:id])
                    when "Question"
                     Question.find_by(id: params[:id])
                    end
+    binding.pry
     attributes = comment_params.merge(author_id: session[:user_id])
     @comment = commentable.comments.build(attributes)
     @question = @comment.associated_question

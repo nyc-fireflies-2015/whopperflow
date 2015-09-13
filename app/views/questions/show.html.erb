@@ -4,7 +4,7 @@
 		<% @question.comments.each do |comment| %>
 		<%= render partial: "comments/show", locals: {comment: comment} %>
 		<% end %>
-		<li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question'} %></li>
+		<li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question', id: @question} %></li>
 	</ul>
 	<hr class="top">
 	<h2 class="answers-header"><%= @question.answers.count %> Answers</h2>
