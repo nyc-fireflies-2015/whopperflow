@@ -3,27 +3,39 @@ include LoginMacros
 
 describe QuestionsController, type: :controller do
 	let!(:user) { FactoryGirl.create(:user) }
+  let!(:question) { FactoryGirl.create(:question) }
+
 
   describe 'GET #index' do
     context 'questions page' do
-      it 'assigns all questions to @questions' do
+      before :each do
         get :index
+      end
+      it 'assigns all questions to @questions' do
         expect(assigns(:questions)).to eq Question.all
       end
 
-      it "renders the :index template" do
-        # binding.pry
-        get :index
+      it "renders the index template" do
         expect(response).to render_template :index
       end
     end
   end
 
-  # describe 'GET #show' do
-  #   context 'view specific question' do
-  #     it ''
-  #   end
-  # end
+  describe 'GET #show' do
+    context 'view specific question' do
+      before :each do
+        get :show, id: question.id
+      end
+
+      it 'assigns the requested question to @question' do
+        expect(assigns(:question)).to eq question
+      end
+
+      it 'renders the show template' do
+        expect(response).to render_template :show
+      end
+    end
+  end
 
 	describe 'GET #new' do
 		context 'is logged in' do
@@ -39,15 +51,15 @@ describe QuestionsController, type: :controller do
     context 'valid question params' do
       before :each do
         login(user)
-        post :create, question: FactoryGirl.attributes_for(:question)
       end
 
       it "creates a new question in the database" do
-      	expect(Question.count).to eq 1
+        expect{post :create, question: FactoryGirl.attributes_for(:question)}.to change(Question, :count).by(1)
       end
 
       it "redirects to Question#show" do
-        expect(response).to redirect_to Question.last
+        post :create, question: FactoryGirl.attributes_for(:question)
+        expect(response).to redirect_to question_path(assigns[:question])
       end
     end
 
