@@ -62,29 +62,12 @@ describe QuestionsController, type: :controller do
         expect(response).to redirect_to question_path(assigns[:question])
       end
     end
-
-    # context 'invalid question params' do
-    #   before :each do
-    #     login(user)
-        # binding.pry
-        # post :create, question: FactoryGirl.attributes_for(:invalid_question)
-        # post :create, question:{title: "Hello World", content: nil}
-      # end
-
-      # it "does not create a question in the database" do
-      #   expect(response).to render_template :new
-      # end
-      # it "redirects to answers#new" do
-    #     post :create, id: question.id,
-    #     answer: {content: nil}
-    #     expect(response).to redirect_to new_answer
-    #   end
-    # end
   end
 
   describe 'GET #edit' do
     context 'edit existing question' do
       before :each do
+        login(user)
         get :edit, id: question.id
       end
       it 'assigns the requested question to @question' do
