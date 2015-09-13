@@ -6,18 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-10.times do
-  FactoryGirl.create(:user)
-end
-
-10.times do
-  # require 'pry';binding.pry
-  q = Question.find_or_create_by(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, author: User.all.sample)
-end
-
 20.times do
-  # binding.pry
-  a = Question.all.sample.answers.find_or_create_by(content: Faker::Lorem.paragraph, author: User.all.sample)
+  u = FactoryGirl.create(:user)
+  u2 = FactoryGirl.create(:user)
+  2.times do
+    q = u.questions.create(FactoryGirl.attributes_for(:question))
+    2.times do
+      q.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u2))
+    end
+    3.times do
+      a = q.answers.create(FactoryGirl.attributes_for(:answer).merge(author: u2))
+      2.times do
+        a.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u))
+      end
+    end
+  end
 end
-
-
