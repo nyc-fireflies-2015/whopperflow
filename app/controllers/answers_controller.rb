@@ -50,23 +50,18 @@ class AnswersController < ApplicationController
 
   def up_vote
     @answer = Answer.find_by(id: params[:id])
-    if !answer_voted_by_current_user?(@answer)
-      @vote = @answer.votable.build(vote_params)
-      @vote.up_or_down = true
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless answer_voted_by_current_user?(@answer)
+      @answer.up_vote(session[:user_id])
     end
   end
 
   def down_vote
     @answer = Answer.find_by(id: params[:id])
-    if !answer_voted_by_current_user?(@answer)
-      @vote = @answer.votable.build(vote_params)
-      @vote.up_or_down = false
-      @vote.voter_id = current_user.id
-      @vote.save
+    unless answer_voted_by_current_user?(@answer)
+      @answer.down_vote(session[:user_id])
     end
   end
+
 
   private
 
