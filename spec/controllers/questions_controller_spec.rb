@@ -122,4 +122,15 @@ describe QuestionsController, type: :controller do
     end
   end
 
+  describe 'DELETE #destroy' do
+    it 'deletes the question' do
+      expect{delete :destroy, id: question.id}.to change(Question, :count).by -1
+    end
+
+    it 'redirects to index' do
+      delete :destroy, id: question.id
+      expect(response).to redirect_to questions_path
+    end
+  end
+
 end
