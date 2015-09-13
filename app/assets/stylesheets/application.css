@@ -12,7 +12,6 @@
     margin: 0px;
     padding: 0px;
     background: #180E0B;
-
     font-size: 11pt;
     color: #000000;
   }
@@ -614,3 +613,36 @@
 }
 
 
+/*Question styling*/
+
+.question-list{
+  text-align: center;
+}
+
+.question-display{
+  display: inline-block;
+  width: 600px;
+  height: 100px;
+  border: solid #0076FF 5px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.question-header{
+  font-size: 60px;
+}
+.answers-header{
+  font-size: 60px
+}
+.bottom{
+  margin-bottom: 50px;
+}
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}

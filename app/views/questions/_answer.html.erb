@@ -1,0 +1,16 @@
+<div><%= answer.content %></div>
+
+  <% if answer.author_id == session[:user_id] %>
+    <br>
+    <div><%= link_to 'Edit', edit_answer_path(answer) %></div>
+    <br>
+  <% end %>
+
+  <li class="question-display">
+      <p>
+        <span class="username"><%= question.author.username %></span>
+          <span class="timestamp"><%= question.created_at %></span>
+          <span class="votes"># votes</span>
+      </p>
+        <p><%= link_to question.title, question_path(question) %><p>
+  </li>
