@@ -11,32 +11,31 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
-      return
     end
     @question = Question.new()
   end
 
   def create
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
     end
     user = current_user
     @question = user.questions.new(question_params)
-
     if @question.save
       redirect_to @question
     else
+      flash[:error] = @question.errors.full_messages
       render :new
     end
   end
 
   def edit
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
@@ -50,6 +49,7 @@ class QuestionsController < ApplicationController
     if @question.update_attributes(question_params)
       redirect_to @question
     else
+      flash[:error] = @question.errors.full_messages
       render :edit
     end
 
@@ -61,9 +61,35 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
+  def up_vote
+    @question = Question.find_by(id: params[:id])
+    unless question_voted_by_current_user?(@question)
+      @vote = @question.votable.build(vote_params)
+      @vote.up_or_down = true
+      @vote.voter_id = current_user.id
+      @vote.save
+    end
+  end
+
+  def down_vote
+    @question = Question.find_by(id: params[:id])
+    unless question_voted_by_current_user?(@question)
+      @vote = @question.votable.build(vote_params)
+      @vote.up_or_down = false
+      @vote.voter_id = current_user.id
+      @vote.save
+    end
+  end
+
+
   private
 
   def question_params
     params.require(:question).permit(:title, :content)
   end
+
+  def vote_params
+    params.require(:vote).permit(:up_or_down)
+  end
+
 end

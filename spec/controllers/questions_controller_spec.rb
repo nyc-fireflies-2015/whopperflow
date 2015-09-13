@@ -67,7 +67,11 @@ describe QuestionsController, type: :controller do
   describe 'GET #edit' do
     context 'edit existing question' do
       before :each do
+<<<<<<< HEAD
         login(user)
+=======
+        session[:user_id] = user.id
+>>>>>>> cf86e40bb79b39d1c5abe46945617e2cc7011d2e
         get :edit, id: question.id
       end
       it 'assigns the requested question to @question' do

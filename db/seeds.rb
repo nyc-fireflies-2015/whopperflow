@@ -6,12 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-10.times do
- u = FactoryGirl.create(:user)
- 5.times do
+20.times do
+  u = FactoryGirl.create(:user)
+  u2 = FactoryGirl.create(:user)
+  2.times do
     q = u.questions.create(FactoryGirl.attributes_for(:question))
-    5.times do
-      q.answers.create(FactoryGirl.attributes_for(:answer))
+    2.times do
+      q.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u2))
+    end
+    3.times do
+      a = q.answers.create(FactoryGirl.attributes_for(:answer).merge(author: u2))
+      2.times do
+        a.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u))
+      end
     end
   end
 end

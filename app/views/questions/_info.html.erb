@@ -1,0 +1,13 @@
+  <li class="question-display">
+      <p>
+        <span class="username"><%= question.author.username %></span>
+          <span class="timestamp"><%= question.created_at %></span>
+          <span class="votes"># votes</span>
+      </p>
+      <hr>
+        <p><%= link_to question.title, question_path(question) %><p>
+  <% if question.author_id == session[:user_id] %>
+  <br>
+  <p><%= link_to 'Edit', edit_question_path(question) %></p>
+<% end %>
+  </li>
