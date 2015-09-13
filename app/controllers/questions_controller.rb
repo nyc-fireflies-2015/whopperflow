@@ -61,9 +61,35 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
+  def up_vote
+    @question = Question.find_by(id: params[:id])
+    if !question_voted_by_current_user?(@question)
+      @vote = @question.votable.build(vote_params)
+      @vote.up_or_down = true
+      @vote.voter_id = current_user.id
+      @vote.save
+    end
+  end
+
+  def down_vote
+    @question = Question.find_by(id: params[:id])
+    if !question_voted_by_current_user?(@question)
+      @vote = @question.votable.build(vote_params)
+      @vote.up_or_down = false
+      @vote.voter_id = current_user.id
+      @vote.save
+    end
+  end
+
+
   private
 
   def question_params
     params.require(:question).permit(:title, :content)
   end
+
+  def vote_params
+    params.require(:vote).permit(:up_or_down)
+  end
+
 end
