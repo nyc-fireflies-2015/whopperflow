@@ -32,16 +32,20 @@ class UsersController < ApplicationController
   end
 
   def show # profile
-    redirect_to_login_unless_logged_in
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @user = User.find_by(id: session[:user_id]) #check a better way to do this
   end
 
-  # def logout
-  #   @user = User.find_by(id: session[:user_id])
-  #   if @user
-  #     session.clear
-  #   end
-  # end
+  def destroy # logout
+    if current_user
+      session.clear
+    end
+    redirect_to '/'
+  end
 
   private
 

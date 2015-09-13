@@ -7,14 +7,24 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(id: params[:id])
-    @answer = Answer.new()
+    @answer = Answer.new
   end
 
   def new
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @question = Question.new()
   end
 
   def create
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     user = current_user
     @question = user.questions.new(question_params)
 
@@ -26,6 +36,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    if !logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @question = Question.find_by(id: params[:id])
   end
 

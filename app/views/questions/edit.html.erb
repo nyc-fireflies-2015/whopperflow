@@ -1,6 +1,6 @@
 <h1>Editing question</h1>
 
-<%= form_for :question, url: question_path(@question), method: :patch do |f| %>
+<%= form_for :question, url: question_path(@question), method: :patch, :html => {:class =>"dark-matter"} do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
