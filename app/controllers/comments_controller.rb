@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
 
   def new
+    binding.pry
     @comment = Comment.new
+    @type = params[:type]
   end
 
   def create
