@@ -1,35 +1,29 @@
-<!-- <hr class="top">
-<p><%= @question.title %></p>
-<hr class="bottom">
-<p><%= @question.content %></p> -->
 <div class="question-list">
   <%= render partial: "questions/info", locals: {question: @question} %>
-
-<% if @question.author_id == session[:user_id] %>
-  <br>
-	<p><%= link_to 'Edit', edit_question_path(@question) %></p>
+  <ul class="comments">
+  <% @question.comments.each do |comment|
+%>
+  <%= render partial: "comments/show", locals: {comment: comment} %>
 <% end %>
-
-<%= render partial: "comments/index", locals: {element: @question} %>
-
+</ul>
 <hr class="top">
 <h2 class="answers-header"><%= @question.answers.count %> Answers</h2>
 <hr class="bottom">
-</div>
+<ul>
 <% @question.answers.each do |answer| %>
-
-  <div><%= answer.content %></div>
-
-  <% if answer.author_id == session[:user_id] %>
-    <br>
-    <div><%= link_to 'Edit', edit_answer_path(answer) %></div>
-    <br>
+ <%= render partial: "questions/answer", locals: {answer: answer} %>
+ <ul class="comments">
+  <% answer.comments.each do |comment|
+%>
+  <%= render partial: "comments/show", locals: {comment: comment} %>
   <% end %>
-
-<%= render partial: "comments/index", locals: {element: answer} %>
-
+</ul>
 <% end %>
-<%= link_to 'Back', questions_path %>
+</ul>
 
+<div class="back">
+  <%= link_to 'Back', questions_path %>
+</div>
 
 <%= render partial: "answers/new", locals: {answer: @answer} %>
+</div>

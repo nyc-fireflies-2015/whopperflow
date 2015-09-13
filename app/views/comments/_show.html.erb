@@ -4,6 +4,8 @@
           <span class="timestamp"><%= comment.created_at %></span>
           <span class="votes"># votes</span>
       </p>
+      <hr>
+      <p><%= comment.content %></p>
   <% if comment.author_id == session[:user_id] %>
   <br>
   <p><%= link_to 'Edit', edit_comment_path(question) %></p>
