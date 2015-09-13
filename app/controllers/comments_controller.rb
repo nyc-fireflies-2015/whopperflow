@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
   def new
-    binding.pry
     @comment = Comment.new
     @type = case params[:type]
               when "Answer"
@@ -12,18 +11,18 @@ class CommentsController < ApplicationController
   end
 
   def create
+    binding.pry
     commentable  = case params[:type]
                    when "Answer"
                     Answer.find_by(id: params[:id])
                    when "Question"
                     Question.find_by(id: params[:id])
                    end
-    binding.pry
     attributes = comment_params.merge(author_id: session[:user_id])
     @comment = commentable.comments.build(attributes)
     @question = @comment.associated_question
     flash[:error] = "incorrect comment format" unless @comment.save
-    redirect_to questions_url
+    redirect_to @question
   end
 
   def edit
@@ -38,7 +37,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:id])
-    @question = comment.associated_question
+    @question = @comment.associated_question
     @comment.update_attributes(comment_params)
 
     if @comment.save

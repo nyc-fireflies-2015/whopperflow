@@ -7,6 +7,6 @@
       <p><%= comment.content %></p>
   <% if comment.author_id == session[:user_id] %>
   <br>
-  <p><%= link_to 'Edit', edit_comment_path(@question) %></p>
+  <p><%= link_to 'Edit', edit_comment_path(comment) %></p>
 <% end %>
   </li>
