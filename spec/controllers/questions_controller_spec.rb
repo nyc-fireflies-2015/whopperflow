@@ -99,9 +99,19 @@ describe QuestionsController, type: :controller do
 
   describe 'PATCH #update' do
     context 'with valid attributes' do
+      before :each do
+        @question = FactoryGirl.create(:question, title: "What is html?", content: "Please tell me more")
+      end
       it 'locates the requested @question' do
-        patch :update, id: question.id, question: FactoryGirl.attributes_for(:question)
-        expect(assigns(:question)).to eq question
+        patch :update, id: @question.id, question: FactoryGirl.attributes_for(:question)
+        expect(assigns(:question)).to eq @question
+      end
+
+      it "changes @question's attributes" do
+        patch :update, id: @question.id, question: FactoryGirl.attributes_for(:question, title: "What is AJAX?", content: "Please tell me more")
+        @question.reload
+        expect(@question.title).to eq "What is AJAX?"
+        expect(@question.content).to eq "Please tell me more"
       end
     end
   end
