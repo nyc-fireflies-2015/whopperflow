@@ -9,6 +9,8 @@ class Comment < ActiveRecord::Base
       self.commentable.question
     when "Question"
       self.commentable
+    when "Comment"
+      self.commentable.question
     end
   end
 end
