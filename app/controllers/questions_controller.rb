@@ -37,6 +37,7 @@ class QuestionsController < ApplicationController
     unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
+      return
     end
     @question = Question.new()
   end
