@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'questions#index'
   get '/questions/recent' => 'questions#recent'
   get '/questions/trending' => 'questions#trending'
+  get '/questions/most_votes' => 'questions#index'
 
   resources :questions
   resources :comments
