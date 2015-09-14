@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   include ApplicationHelper
 
   def create
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    if !logged_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to do that!"
       redirect_to users_path
       return
