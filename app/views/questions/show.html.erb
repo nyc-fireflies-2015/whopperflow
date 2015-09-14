@@ -16,7 +16,6 @@
 			<% answer.comments.each do |comment| %>
 			<%= render partial: "comments/show", locals: {comment: comment, question: @question} %>
 			<% end %>
-			<li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Answer', id: answer} %></li>
 		</ul>
 		<% end %>
 	</ul>
