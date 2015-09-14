@@ -4,11 +4,8 @@ $(document).ready(function(){
     event.preventDefault();
     ctrl.upvoteQuestion(event.target);
   });
-
   $(document).on("submit", ".downvote_question", function(event){
     event.preventDefault();
     ctrl.downvoteQuestion(event.target);
   });
-
-
 });
