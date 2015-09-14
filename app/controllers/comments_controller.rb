@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  include ApplicationHelper
   def new
     @comment = Comment.new
     @type = case params[:type]
@@ -11,6 +11,11 @@ class CommentsController < ApplicationController
   end
 
   def create
+    unless logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     commentable  = case params[:type]
                    when "Answer"
                     Answer.find_by(id: params[:id])
@@ -25,6 +30,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    unless logged_in?
+      flash[:error] = "You must be logged in to do that!"
+      redirect_to users_path
+      return
+    end
     @comment = Comment.find_by(id: params[:id])
     @question = @comment.associated_question
 

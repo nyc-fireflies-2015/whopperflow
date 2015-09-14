@@ -1,0 +1,5 @@
+<ul class="question-river">
+  <% @questions.each do |question| %>
+      <%= render partial: "questions/info", locals: {question: question} %>
+  <% end %>
+</ul>

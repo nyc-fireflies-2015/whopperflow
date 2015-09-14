@@ -1,8 +1,8 @@
-function Controller(){
-  this.view = new View();
-}
+function VoteController(){
+  this.view = new VoteView();
+};
 
-Controller.prototype = {
+VoteController.prototype = {
   getFormData: function(form){
    var formData = {};
    formData.type = $(form).attr("method");
