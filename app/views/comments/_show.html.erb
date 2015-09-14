@@ -11,3 +11,8 @@
 <% end %>
 <!--   <li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question', id: comment} %></li> -->
   </li>
+  <div class="subcomments">
+  <% comment.comments.each do |subComment| %>
+      <%= render partial: "comments/show", locals: {comment: subComment} %>
+      <% end %>
+    </div>
