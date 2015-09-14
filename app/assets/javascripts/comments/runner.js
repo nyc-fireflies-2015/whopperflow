@@ -4,4 +4,8 @@ $(document).ready(function(){
     event.preventDefault();
     ctrl.getNewCommentForm(event.target);
   });
+  $(document).on("submit", ".comment_form", function(event){
+    event.preventDefault();
+    ctrl.saveComment(event.target);
+  });
 });
