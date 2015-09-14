@@ -3,16 +3,29 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all.to_a.sort_by(&:votes_count).reverse
+    if request.xhr?
+      render :river
+    else
+      render :index
+    end
   end
 
   def recent
     @questions = Question.order('created_at DESC')
-    render :index
+    if request.xhr?
+      render :river
+    else
+      render :index
+    end  
   end
 
   def trending
     @questions = Question.order('votes_count DESC')
-    render :index
+    if request.xhr?
+      render :river
+    else
+      render :index
+    end 
   end
 
   def show
