@@ -1,7 +1,11 @@
-$(document).ready(function(){
-  var ctrl = new CommentController();
-  $(document).on("click", ".add_comment" function(event){
-    event.preventDefault();
-    ctrl.getNewCommentForm(event.target);
-  });
-});
+function CommentController(){
+  this.view = new CommentView();
+}
+CommentController.prototype = {
+  getNewCommentForm: function(eventTarget){
+    var that = this;
+    $.ajax($(eventTarget).attr("href")).done(function(newQuestionDiv){
+      that.view.renderNewCommentForm({target: eventTarget,newDiv: newQuestionDiv});
+    });
+  }
+};
