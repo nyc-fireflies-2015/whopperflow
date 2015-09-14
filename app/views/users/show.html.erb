@@ -1,2 +1,11 @@
-<h1>Profile</h1>
-<%= link_to 'Create a Question', new_question_path %>
+<span class="create-question"><%= link_to 'Create a Question', new_question_path %></span>
+<div class="users-questions">
+  <hr class="top">
+  <h1>Your Questions</h1>
+  <hr class="bottom">
+  <ul class="question-river">
+    <% @user.questions.each do |question| %>
+        <%= render partial: "questions/info", locals: {question: question} %>
+    <% end %>
+  </ul>
+</div>
