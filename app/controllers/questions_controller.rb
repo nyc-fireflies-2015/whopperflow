@@ -88,7 +88,7 @@ class QuestionsController < ApplicationController
   def upvote
     @question = Question.find_by(id: params[:id])
     unless @question.voted_by_current_user?(voter: current_user, up: true)
-      @question.upvote(session[:user_id])
+      @question.upvote(session[:user_id]) if logged_in?
     end
     unless request.xhr?
       redirect_to :back unless request.xhr?
@@ -100,7 +100,7 @@ class QuestionsController < ApplicationController
   def downvote
     @question = Question.find_by(id: params[:id])
     unless @question.voted_by_current_user?(voter: current_user, up: false)
-      @question.downvote(session[:user_id])
+      @question.downvote(session[:user_id]) if logged_in?
     end
     unless request.xhr?
       redirect_to :back unless request.xhr?
