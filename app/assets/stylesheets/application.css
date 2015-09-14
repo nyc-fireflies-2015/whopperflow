@@ -730,11 +730,16 @@ li {
   border-radius: 10px;
   padding: 5px;
 }
-.comment_options{
+.comment_options, .question_comment{
   display:inline-block;
 }
-.comment_options a{
+.comment_options a, .question_comment a{
   margin-left: 20px;
   margin-right: 20px;
   display: inline-block;
+}
+.question_comment{
+  position:relative;
+  right: 200px;
+  top: 10px;
 }

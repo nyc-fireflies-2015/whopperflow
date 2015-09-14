@@ -1,6 +1,6 @@
 <div class="question-list">
 	<%= render partial: "questions/info", locals: {question: @question} %>
-		<li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question', id: @question} %></li>
+		<p class="comment_options question_comment"><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question', id: @question}, class: "add_comment" %></p>
 	<ul class="comments">
 		<% @question.comments.each do |comment| %>
 		<%= render partial: "comments/show", locals: {comment: comment} %>

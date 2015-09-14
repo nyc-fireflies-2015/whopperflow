@@ -8,7 +8,7 @@
   <p class ="comment_options"><% if comment.author_id == session[:user_id] %>
   <%= link_to 'Edit', edit_comment_path(comment) %>
 <% end %>
-<%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Comment', id: comment.id} %> </p>
+<%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Comment', id: comment.id}, class: "add_comment" %> </p>
   </li>
   <div class="subcomments">
   <% comment.comments.each do |subComment| %>
