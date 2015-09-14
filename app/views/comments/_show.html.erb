@@ -5,11 +5,10 @@
       </p>
       <hr>
       <p><%= comment.content %></p>
-  <% if comment.author_id == session[:user_id] %>
-  <br>
-  <p><%= link_to 'Edit', edit_comment_path(comment) %></p>
+  <p class ="comment_options"><% if comment.author_id == session[:user_id] %>
+  <%= link_to 'Edit', edit_comment_path(comment) %>
 <% end %>
-<!--   <li><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Question', id: comment} %></li> -->
+<%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Comment', id: comment.id} %> </p>
   </li>
   <div class="subcomments">
   <% comment.comments.each do |subComment| %>
