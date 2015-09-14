@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
                 Answer.find_by(id: params[:id])
               when "Question"
                 Question.find_by(id: params[:id])
+              when "Comment"
+                Comment.find_by(id: params[:id])
               end
   end
 
@@ -21,6 +23,8 @@ class CommentsController < ApplicationController
                     Answer.find_by(id: params[:id])
                    when "Question"
                     Question.find_by(id: params[:id])
+                   when "Comment"
+                    Comment.find_by(id: params[:id])
                    end
     attributes = comment_params.merge(author_id: session[:user_id])
     @comment = commentable.comments.build(attributes)
