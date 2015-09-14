@@ -1,0 +1,14 @@
+  <li class="question-display">
+      <p>
+        <span class="username"><%= question.author.username %></span>
+          <span class="timestamp"><%= question.created_at %></span>
+          <%= render partial: "questions/votes", locals: {question: question} %>
+      </p>
+      <hr>
+        <p><%= link_to question.title, question_path(question) %><p>
+  <div class="edit">
+  <% if question.author_id == session[:user_id] %>
+  <p><%= link_to 'Edit', edit_question_path(question) %></p>
+<% end %>
+</div>
+  </li>

@@ -1,0 +1,13 @@
+
+<%= form_for @user, :html => {:class =>"dark-matter"} do |f| %>
+  <h1>New User Registration</h1>
+  <%= f.text_field :username, placeholder: "username" %>
+  <br><br>
+  <%= f.password_field :password, placeholder: "password" %>
+  <br><br>
+  <hr>
+  <br><br>
+  <%= submit_tag("Register", :class =>"button")%>
+  <br><br>
+  <%= render partial: "/errors" %>
+<% end %>

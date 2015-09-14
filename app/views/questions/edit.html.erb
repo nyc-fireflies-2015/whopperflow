@@ -1,0 +1,23 @@
+<h1>Editing question</h1>
+
+<%= form_for :question, url: question_path(@question), method: :patch, :html => {:class =>"dark-matter"} do |f| %>
+  <%= render partial: "/errors" %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+
+  <p>
+
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Destroy', question_path(@question), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', questions_path %>

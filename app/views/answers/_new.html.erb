@@ -1,0 +1,12 @@
+<%= form_for @answer, :html => {:class =>"dark-matter"} do |f| %>
+
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+    <input type="hidden" name="id" value="<%= @question.id %>"/>
+  </p>
+
+  <p>
+    <%= f.submit "Post Your Answer" %>
+  </p>
+<% end %>

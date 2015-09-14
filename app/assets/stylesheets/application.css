@@ -1,15 +1,779 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+  Autonomy by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+*/
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    background: #180E0B;
+    font-size: 11pt;
+    color: #000000;
+  }
+
+  h1, h2, h3 {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  h2 {
+    padding: 0px 0px 20px 0px;
+    letter-spacing: -1px;
+    font-size: 1.8em;
+  }
+
+  p, ol, ul {
+    margin-top: 0px;
+    line-height: 160%;
+  }
+
+  p {
+    margin-bottom: 2em;
+    line-height: 160%;
+  }
+
+
+  strong {
+    font-weight: 700;
+  }
+
+  a {
+    color: #A2A2A2;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+    /* Images */
+
+      .image
+      {
+        display: inline-block;
+      }
+
+        .image img
+        {
+          display: block;
+          width: 100%;
+        }
+
+        .image.featured
+        {
+          display: block;
+          width: 100%;
+          margin: 0 0 2em 0;
+        }
+
+        .image.full
+        {
+          display: block;
+          width: 100%;
+          margin-bottom: 2em;
+        }
+
+        .image.left
+        {
+          float: left;
+          margin: 0 2em 2em 0;
+        }
+
+        .image.centered
+        {
+          display: block;
+          margin: 0 0 2em 0;
+        }
+
+          .image.centered img
+          {
+            margin: 0 auto;
+            width: auto;
+          }
+
+    header
+    {
+      margin-bottom: 1em;
+    }
+
+      header h2
+      {
+        font-weight: 600;
+      }
+
+      header .byline
+      {
+        display: block;
+        margin: 0.5em 0 0 0;
+        padding: 0 0 0.5em 0;
+      }
+
+    ul.style
+    {
+    }
+
+    ul.style li
+    {
+      padding: 0.55em 0em;
+    }
+
+    ul.style li:first-child
+    {
+    }
+
+    ul.style a
+    {
+      color: #774535 !important;
+    }
+
+    ul.style1
+    {
+    }
+
+    ul.style1 li
+    {
+      padding: 0.55em 0em;
+    }
+
+    ul.style1 li:first-child
+    {
+    }
+
+    ul.style1 a
+    {
+      color: #774535 !important;
+    }
+
+    ul.style1 img
+    {
+      float: left;
+      margin-right: 1em;
+    }
+
+    hr.top {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    hr.bottom {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 -12px 12px -12px rgba(0, 0, 0, 0.5);
+    }
+
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+  #header
+  {
+    position: relative;
+  }
+
+    #header .container
+    {
+      position: relative;
+      padding: 6em 0em;
+    }
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+  #logo
+  {
+    position: absolute;
+    left: 0em;
+    top: 4.5em;
+  }
+
+    #logo h1
+    {
+      color: #FFF;
+    }
+
+    #logo a
+    {
+      font-family: 'Luckiest Guy', cursive!important;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 40px;
+      font-weight: 600;
+      color: #FFF;
+    }
+
+    .logo {
+      display: inline-block;
+    }
+
+/*********************************************************************************/
+/* Nav                                                                           */
+/*********************************************************************************/
+
+  #nav
+  {
+    position: absolute;
+    right: 0em;
+    top: 5em;
+  }
+
+    #nav > ul > li
+    {
+      float: left;
+    }
+
+      #nav > ul > li:last-child
+      {
+        padding-right: 0;
+      }
+
+      #nav > ul > li > a,
+      #nav > ul > li > span
+      {
+        display: block;
+        margin-left: 0.7em;
+        padding: 0.80em 1.2em;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        font-size: 1em;
+        outline: 0;
+        color: #FFF;
+      }
+
+      #nav li.active a
+      {
+        background: #56c9d6;
+        border-radius: 5px;
+        color: #FFF;
+      }
+
+      #nav > ul > li > ul
+      {
+        display: none;
+      }
+
+/*********************************************************************************/
+/* Banner                                                                        */
+/*********************************************************************************/
+
+  #banner
+  {
+    position: relative;
+    background: #333 url(../images/banner.jpg) no-repeat center;
+    background-size: cover;
+  }
+
+  .homepage #banner
+  {
+  }
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+  #main
+  {
+    position: relative;
+    padding: 6em 0em;
+    background: #261611;
+    color: #774535;
+  }
+
+  #main header h2
+  {
+    color: #bc765f;
+  }
+
+  #main a
+  {
+    color: #bc765f;
+  }
+
+/*********************************************************************************/
+/* Featured                                                                      */
+/*********************************************************************************/
+
+  #featured
+  {
+    position: relative;
+    padding: 6em 0em 4em 0em;
+    background: #FFF;
+  }
+
+/*********************************************************************************/
+/* Marketing                                                                     */
+/*********************************************************************************/
+
+  #marketing
+  {
+    position: relative;
+    padding: 6em 0em;
+    background: #372019;
+    color: #8c5240;
+  }
+
+  #marketing header h2
+  {
+    color: #c0745d;
+  }
+
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+
+  #copyright
+  {
+    position: relative;
+    padding: 3em 0em;
+    text-align: center;
+    color: #774535;
+  }
+
+  #copyright .container
+  {
+  }
+
+  #copyright a
+  {
+    text-decoration: none;
+    color: #774535 !important;
+  }
+
+
+/* Resets (http://meyerweb.com/eric/tools/css/reset/ | v2.0 | 20110126 | License: none (public domain)) */
+
+  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}body{-webkit-text-size-adjust:none}
+
+/* Box Model */
+
+  *, *:before, *:after {
+    font-family: 'Marvel', sans-serif!important;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+/* Container */
+
+  body {
+    min-width: 1200px;
+  }
+
+  .container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Modifiers */
+
+    .container.small {
+      width: 900px;
+    }
+
+    .container.big {
+      width: 100%;
+      max-width: 1500px;
+      min-width: 1200px;
+    }
+
+/* Grid */
+
+  /* Cells */
+
+    .\31 2u { width: 100% }
+    .\31 1u { width: 91.6666666667% }
+    .\31 0u { width: 83.3333333333% }
+    .\39 u { width: 75% }
+    .\38 u { width: 66.6666666667% }
+    .\37 u { width: 58.3333333333% }
+    .\36 u { width: 50% }
+    .\35 u { width: 41.6666666667% }
+    .\34 u { width: 33.3333333333% }
+    .\33 u { width: 25% }
+    .\32 u { width: 16.6666666667% }
+    .\31 u { width: 8.3333333333% }
+    .\-11u { margin-left: 91.6666666667% }
+    .\-10u { margin-left: 83.3333333333% }
+    .\-9u { margin-left: 75% }
+    .\-8u { margin-left: 66.6666666667% }
+    .\-7u { margin-left: 58.3333333333% }
+    .\-6u { margin-left: 50% }
+    .\-5u { margin-left: 41.6666666667% }
+    .\-4u { margin-left: 33.3333333333% }
+    .\-3u { margin-left: 25% }
+    .\-2u { margin-left: 16.6666666667% }
+    .\-1u { margin-left: 8.3333333333% }
+
+    .row > * {
+      padding: 50px 0 0 50px;
+      float: left;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .row + .row > * {
+      padding-top: 50px;
+    }
+
+    .row {
+      margin-left: -50px;
+    }
+
+  /* Rows */
+
+    .row:after {
+      content: '';
+      display: block;
+      clear: both;
+      height: 0;
+    }
+
+    .row:first-child > * {
+      padding-top: 0;
+    }
+
+    .row > * {
+      padding-top: 0;
+    }
+
+    /* Modifiers */
+
+      /* Flush */
+
+        .row.flush {
+          margin-left: 0;
+        }
+
+        .row.flush > * {
+          padding: 0 !important;
+        }
+
+      /* Quarter */
+
+        .row.quarter > * {
+          padding: 12.5px 0 0 12.5px;
+        }
+
+        .row.quarter + .row.quarter > * {
+          padding-top: 12.5px;
+        }
+
+        .row.quarter {
+          margin-left: -12.5px;
+        }
+
+      /* Half */
+
+        .row.half > * {
+          padding: 25px 0 0 25px;
+        }
+
+        .row.half + .row.half > * {
+          padding-top: 25px;
+        }
+
+        .row.half {
+          margin-left: -25px;
+        }
+
+      /* One and (a) Half */
+
+        .row.oneandhalf > * {
+          padding: 75px 0 0 75px;
+        }
+
+        .row.oneandhalf + .row.oneandhalf > * {
+          padding-top: 75px;
+        }
+
+        .row.oneandhalf {
+          margin-left: -75px;
+        }
+
+      /* Double */
+
+        .row.double > * {
+          padding: 100px 0 0 100px;
+        }
+
+        .row.double + .row.double > * {
+          padding-top: 100px;
+        }
+
+        .row.double {
+          margin-left: -100px;
+        }
+
+/* #### Dark Matter Form CSS rules #### */
+.dark-matter {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    background: #555;
+    padding: 20px 30px 20px 30px;
+
+    color: #D3D3D3;
+    text-shadow: 1px 1px 1px #444;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.dark-matter h1 {
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #444;
+    margin: -10px -30px 30px -30px;
+}
+.dark-matter h1>span {
+    display: block;
+    font-size: 11px;
+}
+.dark-matter label {;
+    display: block;
+    margin: 0px 0px 5px;
+}
+.dark-matter label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.dark-matter input[type="text"], .dark-matter input[type="email"], .dark-matter textarea, .dark-matter select {
+    border: none;
+    color: #525252;
+    height: 25px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    background: #DFDFDF;
+}
+.dark-matter select {
+    background: #DFDFDF url('down-arrow.png') no-repeat right;
+    background: #DFDFDF url('down-arrow.png') no-repeat right;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    color: #525252;
+    line-height: 25px;
+}
+.dark-matter textarea{
+    height:100px;
+    padding: 5px 0px 0px 5px;
+    width: 70%;
+}
+.dark-matter .button {
+    background: #FFCC02;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #585858;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    text-shadow: 1px 1px 1px #FFE477;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px #3D3D3D;
+    -webkit-box-shadow:1px 1px 1px #3D3D3D;
+    -moz-box-shadow:1px 1px 1px #3D3D3D;
+}
+
+.dark-matter .button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+}
+
+/* custom */
+.error-message {
+  color: red;
+}
+
+
+/*Question styling*/
+
+.question-list{
+  text-align: center;
+}
+
+.question-display, .answer-display, .comment-display{
+  display: inline-block;
+  width: 600px;
+  min-height: 100px;
+  border: solid #0076FF 5px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  font-size: 30px;
+  padding: 8px;
+}
+
+.question-display, .answer-display{
+  margin-bottom: 30px;
+}
+
+.answer-display{
+  background-color: #FFE3E9;
+}
+
+.comments{
+  position:relative;
+  left: 80px;
+  top: -20px;
+}
+.comment-display{
+  font-size: 18px;
+  margin-bottom: 10px;
+  background-color: #DEDDD6;
+}
+
+.question-display{
+  height: 140px;
+}
+
+
+.question-header{
+  font-size: 60px;
+}
+.answers-header{
+  font-size: 60px
+}
+.bottom{
+  margin-bottom: 50px;
+}
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.back{
+  display:inline-block;
+  width: 100px;
+  border: solid #0076FF 5px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  background-color: #DEDDD6;
+}
+
+
+/*Votes*/
+
+.vote{
+  position: relative;
+  top: -20px;
+  float:right;
+  text-align: center;
+  width: 80px;
+}
+.votes_count{
+  position: relative;
+  float: right;
+  top: -50px;
+}
+.upvote, .downvote{
+  clear: right;
+}
+.edit{
+  float: right;
+}
+
+/*sorting*/
+.order-by{
+  display: inline-block;
+  font-size: 30px;
+  padding: 8px;
+}
+.order-by a{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.order-by a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+/*comments*/
+.subcomments{
+  position: relative;
+  left: 80px;
+}
+.subcomment{
+  position: relative;
+  left: 60px;
+}
+.comment_options a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}
+.comment_options, .question_comment{
+  display:inline-block;
+}
+.comment_options a, .question_comment a{
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+}
+.question_comment{
+  position:relative;
+  right: 200px;
+  top: 10px;
+}
+
+.comment_div{
+  margin-bottom: 30px;
+}
+
+.edit{
+  position:relative;
+  left: 50px;
+  top: -10px;
+  font-size: 60%;
+}
+.edit a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}
+.users-questions{
+  margin-top: 30px;
+}
+.users-questions h1{
+  font-size: 200%;
+}
+.create-question{
+  font-size: 150%;
+}
+.create-question a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}

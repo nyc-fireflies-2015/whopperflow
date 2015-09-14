@@ -1,0 +1,11 @@
+<div class="container">
+
+<% if flash[:error].class == String %>
+  <p class="error-message"><%=flash[:error]%></p>
+<% elsif flash[:error].class == Array %>
+  <% flash[:error].each do |error| %>
+    <p class="error-message"><%=error%></p>
+  <% end %>
+<% end %>
+
+</div>

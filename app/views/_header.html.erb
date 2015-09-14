@@ -1,0 +1,31 @@
+<div id="header">
+      <div class="container">
+
+        <!-- Logo -->
+        <div id="logo">
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <%= image_tag("Hamburger_Icon.png", width: '50', height: '50', alt: 'Site Logo', class:"logo") %>
+          <h1><a href="/questions">Whopper Overflow</a></h1>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li class="active"><a href="/questions">All Questions</a></li>
+            <% if logged_in? %>
+             <li><%= link_to 'Your Profile', user_path(current_user) %></li>
+             <li><%= render partial: "/logout" %></li>
+            <%else%>
+            <li><%= link_to 'Login', users_path %></li>
+            <li><%= link_to 'Register', new_user_path %></li>
+            <%end%>
+          </ul>
+        </nav>
+
+      </div>
+</div>

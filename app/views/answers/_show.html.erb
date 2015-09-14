@@ -1,0 +1,19 @@
+  <div class="comment_handler">
+  <li class="answer-display">
+      <p>
+        <span class="username"><%= answer.author.username %></span>
+          <span class="timestamp"><%= answer.created_at %></span>
+          <span class="votes"><%= render partial: "answers/votes", locals: {answer: answer} %></span>
+      </p>
+      <hr>
+      <p><%= answer.content %></p>
+  <p>
+<p class="comment_options"><%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Answer', id: answer.id}, class: "add_comment" %>
+    <div class="edit">
+  <% if answer.author_id == session[:user_id] %>
+    <div><%= link_to 'Edit', edit_answer_path(answer) %></div>
+  <% end %>
+  </p>
+  </div>
+  </li>
+</div>

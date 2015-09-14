@@ -1,0 +1,14 @@
+
+
+<%= form_for :user, url: users_login_path, :html => {:class =>"dark-matter"}  do |f| %>
+  <h1>User Login</h1>
+  <%= f.text_field :username, placeholder: "username" %>
+  <br><br>
+  <%= f.password_field :password, placeholder: "password" %>
+  <br><br>
+  <hr>
+  <br><br>
+  <%= submit_tag("Login", :class =>"button") %>
+  <br><br>
+  <%= render partial: "/errors" %>
+<% end %>

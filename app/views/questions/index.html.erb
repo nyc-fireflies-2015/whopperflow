@@ -1,0 +1,18 @@
+<div class="question-list">
+	<hr class="top">
+	<div class="question-header">
+		<h1>Questions</h1>
+		<div class="order-by">
+			<span><%= link_to "recent", questions_recent_path, class: "sort_link" %></span>
+			<span><%= link_to "trending", questions_trending_path, class: "sort_link" %></span>
+			<span><%= link_to "most votes", questions_most_votes_path, class: "sort_link" %></span>
+		</div>
+	</div>
+	<hr class="bottom">
+	<ul class="question-river">
+		<% @questions.each do |question| %>
+		<%= render partial: "questions/info", locals: {question: question} %>
+		<% end %>
+	</ul>
+</div>
+

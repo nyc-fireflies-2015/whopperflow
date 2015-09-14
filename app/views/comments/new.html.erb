@@ -1,0 +1,15 @@
+<div class="comment_div">
+<%= form_for @comment, :html => {:class => "dark-matter comment_form"} do |f| %>
+  <%= render partial: "/errors" %>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+    <input name="type" type="hidden" value="<%= @type.class %>" />
+    <input name="id" type="hidden" value="<%= @type.id %>" />
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>

@@ -5,10 +5,17 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Marvel|Luckiest+Guy' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<%= yield %>
+<%= render partial: "/header" %>
+<div id="main">
+  <div class="container">
+      <%= yield %>
+  </div>
+</div>
 
+<%= render partial: "/footer" %>
 </body>
 </html>
