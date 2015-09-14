@@ -53,7 +53,11 @@ class AnswersController < ApplicationController
     unless @answer.voted_by_current_user?(voter: current_user, up: true)
       @answer.upvote(session[:user_id])
     end
-    redirect_to @answer.question
+    unless request.xhr?
+      redirect_to :back unless request.xhr?
+    else
+      render partial: "questions/votes", locals: {question: @answer.question}
+    end
   end
 
   def downvote
@@ -61,7 +65,11 @@ class AnswersController < ApplicationController
     unless @answer.voted_by_current_user?(voter: current_user, up: false)
       @answer.downvote(session[:user_id])
     end
-    redirect_to @answer.question
+    unless request.xhr?
+      redirect_to :back unless request.xhr?
+    else
+      render partial: "questions/votes", locals: {question: @answer.question}
+    end
   end
 
 

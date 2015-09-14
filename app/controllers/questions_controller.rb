@@ -2,7 +2,11 @@ class QuestionsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @questions = Question.all
+    @questions = Question.order('votes_count DESC')
+  end
+
+  def recent
+    @questions = Question.order('created_at DESC')
   end
 
   def show
