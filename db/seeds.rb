@@ -12,12 +12,18 @@
   2.times do
     q = u.questions.create(FactoryGirl.attributes_for(:question))
     2.times do
-      q.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u2))
+      c = q.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u2))
+      2.times do
+        c.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u)) 
+      end
     end
     3.times do
       a = q.answers.create(FactoryGirl.attributes_for(:answer).merge(author: u2))
       2.times do
-        a.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u))
+        c = a.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u))
+        2.times do
+          c.comments.create(FactoryGirl.attributes_for(:comment).merge(author: u2)) 
+        end
       end
     end
   end
