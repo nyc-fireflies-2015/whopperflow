@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root 'questions#index'
+  get '/questions/recent' => 'questions#recent'
+  get '/questions/trending' => 'questions#trending'
 
   resources :questions
   resources :comments
@@ -8,9 +11,6 @@ Rails.application.routes.draw do
   post '/users/login' => 'users#login'
   delete '/users/logout' => 'users#logout'
 
-  root 'questions#index'
-  get '/questions/recent' => 'questions#recent'
-  get '/questions/trending' => 'questions#trending'
 
   post '/questions/upvote' => 'questions#upvote'
   post '/questions/downvote' => 'questions#downvote'
