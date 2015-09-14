@@ -7,10 +7,12 @@ class QuestionsController < ApplicationController
 
   def recent
     @questions = Question.order('created_at DESC')
+    render :index
   end
 
   def trending
     @questions = Question.order('votes_count DESC')
+    render :index
   end
 
   def show
