@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var ctrl = new Controller();
+  var ctrl = new VoteController();
   $(document).on("submit", ".upvote_question", function(event){
     event.preventDefault();
     ctrl.upvoteQuestion(event.target);
