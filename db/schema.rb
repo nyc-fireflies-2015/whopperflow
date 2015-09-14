@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913145356) do
+ActiveRecord::Schema.define(version: 20150914005448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string   "content",     null: false
+    t.string   "content"
     t.integer  "author_id"
     t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "votes_count", default: 0
   end
 
   create_table "comments", force: :cascade do |t|
@@ -36,12 +37,13 @@ ActiveRecord::Schema.define(version: 20150913145356) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.string   "content",     null: false
+    t.string   "title",                   null: false
+    t.string   "content",                 null: false
     t.integer  "author_id"
     t.integer  "best_answer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "votes_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
