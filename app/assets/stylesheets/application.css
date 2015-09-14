@@ -751,3 +751,15 @@ li {
 .comment_div{
   margin-bottom: 30px;
 }
+
+.edit{
+  position:relative;
+  left: 50px;
+  top: -10px;
+  font-size: 60%;
+}
+.edit a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}
