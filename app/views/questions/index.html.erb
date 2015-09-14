@@ -1,8 +1,12 @@
-
 <div class="question-list">
 	<hr class="top">
 	<div class="question-header">
 		<h1>Questions</h1>
+		<div class="order-by">
+			<%= link_to "recent", questions_recent_path %>
+			<%= link_to "trending", questions_trending_path %>
+			<%= link_to "most votes", questions_most_votes_path %>
+		</div>
 	</div>
 	<hr class="bottom">
 	<ul class="question-river">
