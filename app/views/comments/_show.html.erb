@@ -1,4 +1,8 @@
-  <div class="comment_handler">
+  <% if comment.commentable_type == "Comment" %>
+    <div class="comment_handler subcomment">
+      <% else %>
+      <div class="comment_handler">
+      <% end %>
   <li class="comment-display">
       <p>
         <span class="username"><%= comment.author.username %></span>

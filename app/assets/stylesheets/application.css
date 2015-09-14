@@ -725,6 +725,10 @@ li {
   position: relative;
   left: 80px;
 }
+.subcomment{
+  position: relative;
+  left: 60px;
+}
 .comment_options a:hover{
   background-color: #9DC2E2;
   border-radius: 10px;
