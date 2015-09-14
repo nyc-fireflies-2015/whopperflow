@@ -30,7 +30,11 @@ class CommentsController < ApplicationController
     @comment = commentable.comments.build(attributes)
     @question = @comment.associated_question
     flash[:error] = "incorrect comment format" unless @comment.save
-    redirect_to @question
+    if request.xhr?
+      render partial: "comments/show", locals: {comment: @comment} 
+    else
+      redirect_to @question
+    end
   end
 
   def edit
