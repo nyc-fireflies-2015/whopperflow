@@ -2,11 +2,17 @@ class QuestionsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @questions = Question.order('votes_count DESC')
+    @questions = Question.all.to_a.sort_by(&:votes_count).reverse
   end
 
   def recent
     @questions = Question.order('created_at DESC')
+    render :index
+  end
+
+  def trending
+    @questions = Question.order('votes_count DESC')
+    render :index
   end
 
   def show
