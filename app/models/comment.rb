@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
     when "Question"
       self.commentable
     when "Comment"
-      self.commentable.question
+      self.commentable.associated_question
     end
   end
 end
