@@ -1,3 +1,4 @@
+  <div class="comment_handler">
   <li class="comment-display">
       <p>
         <span class="username"><%= comment.author.username %></span>
@@ -11,6 +12,7 @@
 <%= link_to 'Add a comment', {controller: 'comments', action: 'new', type: 'Comment', id: comment.id}, class: "add_comment" %> </p>
   </li>
   <div class="subcomments">
+  </div>
   <% comment.comments.each do |subComment| %>
       <%= render partial: "comments/show", locals: {comment: subComment} %>
       <% end %>

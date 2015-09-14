@@ -1,5 +1,5 @@
 <div class="comment_div">
-<%= form_for @comment, :html => {:class =>"dark-matter"} do |f| %>
+<%= form_for @comment, :html => {:class => "dark-matter comment_form"} do |f| %>
   <%= render partial: "/errors" %>
   <p>
     <%= f.label :content %><br>
