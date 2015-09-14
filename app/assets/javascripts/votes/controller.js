@@ -1,10 +1,8 @@
 function Controller(){
+  this.view = new View();
 }
 
 Controller.prototype = {
-  getVoteParent: function(eventTarget){
-    return $(document).find(eventTarget).closest(".vote");
-  },
   getFormData: function(form){
    var formData = {};
    formData.type = $(form).attr("method");
@@ -13,15 +11,21 @@ Controller.prototype = {
    return formData;
   },
   upvoteQuestion: function(eventTarget){
-    var targetDiv = this.getVoteParent(eventTarget);
+    var that = this;
     var formData = this.getFormData(eventTarget);
     $.ajax(formData).done(function(newVoteDiv){
-     console.log(newVoteDiv);
+      that.view.updateVotes({target: eventTarget, newDiv: newVoteDiv});
     }).fail(function(error){
       alert(error.responseText);
     });
   },
-  downvoteQuestion: function(target){
-    that = target;
+  downvoteQuestion: function(eventTarget){
+    var that = this;
+    var formData = this.getFormData(eventTarget);
+    $.ajax(formData).done(function(newVoteDiv){
+      that.view.updateVotes({target: eventTarget, newDiv: newVoteDiv});
+    }).fail(function(error){
+      alert(error.responseText);
+    });
   }
 };

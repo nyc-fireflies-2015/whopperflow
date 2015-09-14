@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    binding.pry
     commentable  = case params[:type]
                    when "Answer"
                     Answer.find_by(id: params[:id])
