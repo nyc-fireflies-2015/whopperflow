@@ -27,5 +27,23 @@ Controller.prototype = {
     }).fail(function(error){
       alert(error.responseText);
     });
+  },  
+  upvoteAnswer: function(eventTarget){
+    var that = this;
+    var formData = this.getFormData(eventTarget);
+    $.ajax(formData).done(function(newVoteDiv){
+      that.view.updateVotes({target: eventTarget, newDiv: newVoteDiv});
+    }).fail(function(error){
+      alert(error.responseText);
+    });
+  },
+  downvoteAnswer: function(eventTarget){
+    var that = this;
+    var formData = this.getFormData(eventTarget);
+    $.ajax(formData).done(function(newVoteDiv){
+      that.view.updateVotes({target: eventTarget, newDiv: newVoteDiv});
+    }).fail(function(error){
+      alert(error.responseText);
+    });
   }
 };
