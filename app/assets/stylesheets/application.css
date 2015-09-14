@@ -725,3 +725,16 @@ li {
   position: relative;
   left: 80px;
 }
+.comment_options a:hover{
+  background-color: #9DC2E2;
+  border-radius: 10px;
+  padding: 5px;
+}
+.comment_options{
+  display:inline-block;
+}
+.comment_options a{
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+}
